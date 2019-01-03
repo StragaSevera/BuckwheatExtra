@@ -1,17 +1,14 @@
 package ru.ought.buckwheatextra;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTech_API;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.ought.buckwheatextra.blocks.TestTextureBlock;
-import ru.ought.buckwheatextra.enums.BuckwheatTextures;
 import ru.ought.buckwheatextra.loaders.BuckwheatPreloader;
 import ru.ought.buckwheatextra.utils.BuckwheatCreativeTab;
 
@@ -22,6 +19,7 @@ import ru.ought.buckwheatextra.utils.BuckwheatCreativeTab;
         dependencies = "required-after:IC2;required-after:gregtech"
 )
 public class BuckwheatExtra {
+    @SuppressWarnings("WeakerAccess")
     public static final String MOD_ID = "buckwheatextra";
     static final String MOD_NAME = "Buckwheat Extra";
     static final String VERSION = "1.0";
@@ -54,8 +52,6 @@ public class BuckwheatExtra {
      */
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
-        TestTextureBlock = new TestTextureBlock();
-        GameRegistry.registerBlock(TestTextureBlock, "Test Texture Block");
     }
 
     /**

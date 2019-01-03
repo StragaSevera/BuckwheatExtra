@@ -8,6 +8,7 @@ import ru.ought.buckwheatextra.BuckwheatExtra;
 import ru.ought.buckwheatextra.api.BuckwheatAPI;
 import ru.ought.buckwheatextra.blocks.GT_Block_Casings6;
 import ru.ought.buckwheatextra.enums.BuckwheatItemList;
+import ru.ought.buckwheatextra.enums.BuckwheatTextures;
 import ru.ought.buckwheatextra.tileentities.GT_MetaTileEntity_SuperTank;
 
 public class BuckwheatPreloader implements Runnable {
@@ -18,6 +19,7 @@ public class BuckwheatPreloader implements Runnable {
     @Override
     public void run() {
         BuckwheatExtra.log("Starting preloader");
+        BuckwheatTextures.init();
         BuckwheatAPI.sBlockCasings6 = new GT_Block_Casings6();
 
         GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_0.get(1L), bitsd, new Object[]{"PPP", "PIP", "PPP", 'P', OrePrefixes.plate.get(Materials.WroughtIron), 'I', OrePrefixes.pipeLarge.get(Materials.Bronze)});

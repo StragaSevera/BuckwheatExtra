@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 
 public class BuckwheatCreativeTab extends CreativeTabs {
     public BuckwheatCreativeTab() {
-        super("Buckwheat Extra");
+        super("buckwheatExtra");
     }
 
     @Override
