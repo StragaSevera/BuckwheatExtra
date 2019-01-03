@@ -1,0 +1,110 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+idea.module.inheritOutputDirs = true
+
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.buckwheatextra.version}"
+group= "ru.ought.buckwheatextra"
+archivesBaseName = "buckwheatextra"
+
+minecraft {
+    version = "${config.minecraft.version}-${config.forge.version}"
+    runDir = "eclipse"
+}
+
+configurations {
+    provided
+    embedded
+    compile.extendsFrom provided, embedded
+}
+
+repositories {
+    maven {
+        name 'Forge'
+        url 'http://files.minecraftforge.net/maven'
+    }
+    maven {
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        name = "ic2, forestry"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven { // EnderIO & EnderCore
+        name 'tterrag Repo'
+        url "http://maven.tterrag.com"
+    }
+    maven { // AppleCore
+        url "http://www.ryanliptak.com/maven/"
+    }
+    ivy {
+        name "BuildCraft"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
+    }
+    ivy {
+        name 'CoFHLib'
+        artifactPattern "http://addons-origin.cursecdn.com/files/${config.cofhlib.cf}/[module]-[revision].[ext]"
+    }
+    ivy {
+        name 'CoFHCore'
+        artifactPattern "http://addons-origin.cursecdn.com/files/${config.cofhcore.cf}/[module]-[revision].[ext]"
+    }
+    ivy {
+        name 'Railcraft'
+        artifactPattern "http://addons-origin.cursecdn.com/files/${config.railcraft.cf}/[module]_[revision].[ext]"
+    }
+    ivy {
+        name 'IC2NuclearControl'
+        artifactPattern "http://addons-origin.cursecdn.com/files/${config.nc.cf}/[module]-[revision].[ext]"
+    }
+}
+
+dependencies {
+    provided "codechicken:CodeChickenLib:${config.minecraft.version}-${config.codechickenlib.version}:dev"
+    provided "codechicken:CodeChickenCore:${config.minecraft.version}-${config.codechickencore.version}:dev"
+//    provided "codechicken:NotEnoughItems:${config.minecraft.version}-${config.nei.version}:dev"
+    provided "codechicken:NotEnoughItems:${config.minecraft.version}-${config.nei.version}:dev"
+    provided "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
+}
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
