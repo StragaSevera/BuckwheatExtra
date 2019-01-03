@@ -24,7 +24,7 @@ public class GT_Block_Casings6
             Textures.BlockIcons.casingTexturePages[1][i + 96] = new GT_CopiedBlockTexture(this, 6, i);
         }
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".0.name", "Hermetic Casing");
-//        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".1.name", "Hermetic Casing I");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".1.name", "Hermetic Casing I");
 //        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".2.name", "Hermetic Casing II");
 //        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".3.name", "Hermetic Casing III");
 //        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".4.name", "Hermetic Casing IV");
@@ -35,7 +35,7 @@ public class GT_Block_Casings6
 //        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Hermetic Casing IX");
 //        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".10.name", "Hermetic Casing X");
         BuckwheatItemList.Casing_Tank_0.set(new ItemStack(this, 1, 0));
-//        BuckwheatItemList.Casing_Tank_1.set(new ItemStack(this, 1, 1));
+        BuckwheatItemList.Casing_Tank_1.set(new ItemStack(this, 1, 1));
 //        BuckwheatItemList.Casing_Tank_2.set(new ItemStack(this, 1, 2));
 //        BuckwheatItemList.Casing_Tank_3.set(new ItemStack(this, 1, 3));
 //        BuckwheatItemList.Casing_Tank_4.set(new ItemStack(this, 1, 4));
@@ -51,22 +51,21 @@ public class GT_Block_Casings6
             BuckwheatExtra.log("Icon is loading!");
         } else {
             BuckwheatExtra.log("ICON IS NOT LOADING!!!!!!! ERROR!!!!!");
-        } 
+        }
     }
+
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int aSide, int aMeta) {
-//        if (aSide == 0) {
-//            return Textures.BlockIcons.MACHINECASINGS_BOTTOM[aMeta].getIcon();
-//        } else if (aSide == 1) {
-//            return Textures.BlockIcons.MACHINECASINGS_TOP[aMeta].getIcon();
-//        } 
-//        else if ((aMeta >= 1) && (aMeta <= 15)) {
-//            return BuckwheatTextures.MACHINE_CASING_TANK_ARRAY[aMeta].getIcon();
-//        } 
-//        else {
+        if (aSide == 0) {
+            return Textures.BlockIcons.MACHINECASINGS_BOTTOM[aMeta].getIcon();
+        } else if (aSide == 1) {
+            return Textures.BlockIcons.MACHINECASINGS_TOP[aMeta].getIcon();
+        } else if ((aMeta >= 1) && (aMeta <= 15)) {
+            return BuckwheatTextures.MACHINE_CASING_TANK_ARRAY[aMeta].getIcon();
+        } else {
             return BuckwheatTextures.MACHINE_CASING_TANK_DEFAULT.getIcon();
-//        }
+        }
     }
 
     public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
