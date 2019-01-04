@@ -7,6 +7,7 @@ import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 import ru.ought.buckwheatextra.BuckwheatExtra;
 
 import static gregtech.api.enums.GT_Values.W;
@@ -19,12 +20,13 @@ public enum BuckwheatItemList implements IItemContainer {
     Casing_Tank_0, Casing_Tank_1, Casing_Tank_2, Casing_Tank_3, Casing_Tank_4, Casing_Tank_5,
     Casing_Tank_6, Casing_Tank_7, Casing_Tank_8, Casing_Tank_9, Casing_Tank_10;
     
+    public static Fluid sCadmiumSolution;
+    
     private ItemStack mStack;
     private boolean mHasNotBeenSet = true;
 
     @Override
     public IItemContainer set(Item aItem) {
-        BuckwheatExtra.log("Setting item to container: " + aItem.toString());
         mHasNotBeenSet = false;
         if (aItem == null) return this;
         ItemStack aStack = new ItemStack(aItem, 1, 0);
@@ -34,7 +36,6 @@ public enum BuckwheatItemList implements IItemContainer {
 
     @Override
     public IItemContainer set(ItemStack aStack) {
-        BuckwheatExtra.log("Setting stack to container: " + aStack.toString());
         mHasNotBeenSet = false;
         mStack = GT_Utility.copyAmount(1, aStack);
         return this;
