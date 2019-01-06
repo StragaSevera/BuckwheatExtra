@@ -20,13 +20,27 @@ public class BuckwheatPostloader implements Runnable {
         GT_Values.RA.addChemicalRecipe(
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cadmium, 1), null,
                 Materials.Water.getFluid(1000),
-                BuckwheatMaterials.CadmiumSolution.getFluid(1000), null, 10, 2);
-        
-        ItemStack itemStack1 = BuckwheatMaterials.CadmiumSolution.getCells(1);
+                BuckwheatMaterials.CadmiumSolution.getFluid(1000), null, 10, 2
+        );
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cadmium, 1),
                 Materials.Water.getCells(1), null,
-                GT_Values.NF, itemStack1, GT_Values.NI, 10, 2);
+                GT_Values.NF, BuckwheatMaterials.CadmiumSolution.getCells(1), GT_Values.NI, 10, 2
+        );
+        GT_Values.RA.addElectrolyzerRecipe(
+                GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 1), GT_Values.NI,
+                BuckwheatMaterials.CadmiumSolution.getFluid(1000), GT_Values.NF,
+                GT_OreDictUnificator.get(OrePrefixes.ingot, BuckwheatMaterials.CadmiumCoatedSteel, 1),
+                GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
+                new int[]{5000}, 30, 24
+        );
+        GT_Values.RA.addElectrolyzerRecipe(
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 1), GT_Values.NI,
+                BuckwheatMaterials.CadmiumSolution.getFluid(1000), GT_Values.NF,
+                GT_OreDictUnificator.get(OrePrefixes.plate, BuckwheatMaterials.CadmiumCoatedSteel, 1),
+                GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
+                new int[]{5000}, 30, 24
+        );
 
 //        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_0.get(1L), bitsd, new Object[]{"PPP", "PIP", "PPP", 'P', OrePrefixes.plate.get(Materials.WroughtIron), 'I', OrePrefixes.pipeLarge.get(Materials.Bronze)});
 //        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_1.get(1L), bitsd, new Object[]{"PPP", "PIP", "PPP", 'P', OrePrefixes.plate.get(Materials.Steel), 'I', OrePrefixes.pipeLarge.get(Materials.Steel)});
