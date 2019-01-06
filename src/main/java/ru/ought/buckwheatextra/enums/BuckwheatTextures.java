@@ -6,14 +6,15 @@ import gregtech.api.enums.Textures.BlockIcons.CustomIcon;
 public class BuckwheatTextures {
     public static final CustomIcon OVERLAY_STANK = new CustomIcon("buckwheat" +
             "/OVERLAY_STANK");
-    public static final CustomIcon MACHINE_CASING_TANK_DEFAULT = new CustomIcon("buckwheat/MACHINE_CASING_TANK");
-    public static final CustomIcon[] MACHINE_CASING_TANK_ARRAY;
+    public static final CustomIcon MACHINE_CASING_SUPREPRESSURE_DEFAULT = new CustomIcon("buckwheat" +
+            "/MACHINE_CASING_SUPERPRESSURE");
+    public static final CustomIcon[] MACHINE_CASING_SUPERPRESSURE_ARRAY;
 
     static {
-        MACHINE_CASING_TANK_ARRAY = new CustomIcon[16];
-        for (int i = 0; i < MACHINE_CASING_TANK_ARRAY.length; i++) {
-            MACHINE_CASING_TANK_ARRAY[i] = new CustomIcon("buckwheat" +
-                    "/MACHINE_CASING_TANK_" + i);
+        MACHINE_CASING_SUPERPRESSURE_ARRAY = new CustomIcon[16];
+        for (int i = 0; i < MACHINE_CASING_SUPERPRESSURE_ARRAY.length; i++) {
+            MACHINE_CASING_SUPERPRESSURE_ARRAY[i] = new CustomIcon("buckwheat" +
+                    "/MACHINE_CASING_SUPERPRESSURE_" + i);
         }
     }
 

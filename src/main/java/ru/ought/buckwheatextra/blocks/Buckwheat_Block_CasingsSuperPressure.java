@@ -14,26 +14,25 @@ import ru.ought.buckwheatextra.BuckwheatExtra;
 import ru.ought.buckwheatextra.enums.BuckwheatItemList;
 import ru.ought.buckwheatextra.enums.BuckwheatTextures;
 
-public class GT_Block_Casings6
+public class Buckwheat_Block_CasingsSuperPressure
         extends GT_Block_Casings_Abstract {
-    public GT_Block_Casings6() {
-        super(GT_Item_Casings6.class, "gt.blockcasings6", GT_Material_Casings.INSTANCE);
-        BuckwheatExtra.log("Initialising casings");
+    public Buckwheat_Block_CasingsSuperPressure() {
+        super(GT_Item_CasingsSuperPressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
         for (int i = 0; i < 16; i = (i + 1)) {
             Textures.BlockIcons.casingTexturePages[1][i + 96] = new GT_CopiedBlockTexture(this, 6, i);
         }
 
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".0.name", "Hermetic Casing");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".1.name", "Hermetic Casing I");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".2.name", "Hermetic Casing II");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".3.name", "Hermetic Casing III");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".4.name", "Hermetic Casing IV");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".5.name", "Hermetic Casing V");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".6.name", "Hermetic Casing VI");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".7.name", "Hermetic Casing VII");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".8.name", "Hermetic Casing VIII");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Hermetic Casing IX");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".10.name", "Hermetic Casing X");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".0.name", "Super Pressure Casing");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".1.name", "Super Pressure Casing I");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".2.name", "Super Pressure Casing II");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".3.name", "Super Pressure Casing III");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".4.name", "Super Pressure Casing IV");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".5.name", "Super Pressure Casing V");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".6.name", "Super Pressure Casing VI");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".7.name", "Super Pressure Casing VII");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".8.name", "Super Pressure Casing VIII");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Super Pressure Casing IX");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".10.name", "Super Pressure Casing X");
         BuckwheatItemList.Casing_Tank_0.set(new ItemStack(this, 1, 0));
         BuckwheatItemList.Casing_Tank_1.set(new ItemStack(this, 1, 1));
         BuckwheatItemList.Casing_Tank_2.set(new ItemStack(this, 1, 2));
@@ -56,9 +55,9 @@ public class GT_Block_Casings6
         } else if (aSide == 1) {
             return Textures.BlockIcons.MACHINECASINGS_TOP[aMeta].getIcon();
         } else if ((aMeta >= 0) && (aMeta <= 15)) {
-            return BuckwheatTextures.MACHINE_CASING_TANK_ARRAY[aMeta].getIcon();
+            return BuckwheatTextures.MACHINE_CASING_SUPERPRESSURE_ARRAY[aMeta].getIcon();
         } else {
-            return BuckwheatTextures.MACHINE_CASING_TANK_DEFAULT.getIcon();
+            return BuckwheatTextures.MACHINE_CASING_SUPREPRESSURE_DEFAULT.getIcon();
         }
     }
 
