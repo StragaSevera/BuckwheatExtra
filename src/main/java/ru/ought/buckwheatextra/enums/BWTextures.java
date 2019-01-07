@@ -8,12 +8,12 @@ public class BWTextures {
             "/OVERLAY_STANK");
     public static final CustomIcon MACHINE_CASING_SUPREPRESSURE_DEFAULT = new CustomIcon("buckwheat" +
             "/MACHINE_CASING_SUPERPRESSURE");
-    public static final CustomIcon[] MACHINE_CASING_SUPERPRESSURE_ARRAY;
+    public static final CustomIcon[] MACHINE_CASING_Superpressure_ARRAY;
 
     static {
-        MACHINE_CASING_SUPERPRESSURE_ARRAY = new CustomIcon[16];
-        for (int i = 0; i < MACHINE_CASING_SUPERPRESSURE_ARRAY.length; i++) {
-            MACHINE_CASING_SUPERPRESSURE_ARRAY[i] = new CustomIcon("buckwheat" +
+        MACHINE_CASING_Superpressure_ARRAY = new CustomIcon[16];
+        for (int i = 0; i < MACHINE_CASING_Superpressure_ARRAY.length; i++) {
+            MACHINE_CASING_Superpressure_ARRAY[i] = new CustomIcon("buckwheat" +
                     "/MACHINE_CASING_SUPERPRESSURE_" + i);
         }
     }

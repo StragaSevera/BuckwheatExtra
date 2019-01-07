@@ -15,13 +15,13 @@ import ru.ought.buckwheatextra.enums.BWItemList;
 import ru.ought.buckwheatextra.enums.BWTextures;
 import ru.ought.buckwheatextra.utils.RomanNumber;
 
-public class BW_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
+public class BW_Block_CasingsSuperpressure extends GT_Block_Casings_Abstract {
     
     // TODO: Implement casings 5+ tier
-    private static final int MAX_TIER = 5;
+    public static final int MAX_TIER = 5;
 
-    public BW_Block_CasingsSuperPressure() {
-        super(BW_Item_CasingsSuperPressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
+    public BW_Block_CasingsSuperpressure() {
+        super(BW_Item_CasingsSuperpressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
         for (int i = 0; i < 16; i = (i + 1)) {
             Textures.BlockIcons.casingTexturePages[1][i + 96] = new GT_CopiedBlockTexture(this, 6, i);
         }
@@ -29,7 +29,7 @@ public class BW_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
         for (int i = 0; i <= MAX_TIER; i++) {
             GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + i + ".name",
                     "Super Pressure Casing " + RomanNumber.toRoman(i).trim());
-            BWItemList.CasingsSuperpressure[i].set(new ItemStack(this, 1, i));
+            BWItemList.Casings_Superpressure[i].set(new ItemStack(this, 1, i));
         }
 
         setCreativeTab(BuckwheatExtra.TAB_BUCKWHEAT);
@@ -43,7 +43,7 @@ public class BW_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
         } else if (aSide == 1) {
             return Textures.BlockIcons.MACHINECASINGS_TOP[aMeta].getIcon();
         } else if ((aMeta >= 0) && (aMeta <= 15)) {
-            return BWTextures.MACHINE_CASING_SUPERPRESSURE_ARRAY[aMeta].getIcon();
+            return BWTextures.MACHINE_CASING_Superpressure_ARRAY[aMeta].getIcon();
         } else {
             return BWTextures.MACHINE_CASING_SUPREPRESSURE_DEFAULT.getIcon();
         }

@@ -28,11 +28,11 @@ public class BWPostloader implements Runnable {
 //        BWItemList.Super_Tank_EV.set(new BW_MetaTileEntity_SuperTank(143, "super.tank.tier.04", "Super Tank IV", 4).getStackForm(1L));
 //        BWItemList.Super_Tank_IV.set(new BW_MetaTileEntity_SuperTank(144, "super.tank.tier.05", "Super Tank V", 5).getStackForm(1L));
 
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_ULV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_LV, 'M', BWItemList.CasingSuperpressure_0, 'G', OrePrefixes.pipeMedium.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Primitive), 'P', OrePrefixes.plate.get(Materials.Steel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_LV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_MV, 'M', BWItemList.CasingSuperpressure_1, 'G', OrePrefixes.pipeLarge.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Basic), 'P', OrePrefixes.plate.get(Materials.Aluminium)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_MV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.CasingSuperpressure_2, 'G', OrePrefixes.pipeLarge.get(Materials.Steel), 'D', OrePrefixes.circuit.get(Materials.Good), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_HV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.CasingSuperpressure_3, 'G', ItemList.Field_Generator_LV, 'D', OrePrefixes.circuit.get(Materials.Advanced), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_EV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_EV, 'M', BWItemList.CasingSuperpressure_4, 'G', ItemList.Field_Generator_MV, 'D', OrePrefixes.circuit.get(Materials.Data),'P', OrePrefixes.plate.get(Materials.Titanium)});
+//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_ULV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_LV, 'M', BWItemList.Casing_Superpressure_0, 'G', OrePrefixes.pipeMedium.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Primitive), 'P', OrePrefixes.plate.get(Materials.Steel)});
+//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_LV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_MV, 'M', BWItemList.Casing_Superpressure_1, 'G', OrePrefixes.pipeLarge.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Basic), 'P', OrePrefixes.plate.get(Materials.Aluminium)});
+//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_MV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.Casing_Superpressure_2, 'G', OrePrefixes.pipeLarge.get(Materials.Steel), 'D', OrePrefixes.circuit.get(Materials.Good), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
+//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_HV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.Casing_Superpressure_3, 'G', ItemList.Field_Generator_LV, 'D', OrePrefixes.circuit.get(Materials.Advanced), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
+//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_EV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_EV, 'M', BWItemList.Casing_Superpressure_4, 'G', ItemList.Field_Generator_MV, 'D', OrePrefixes.circuit.get(Materials.Data),'P', OrePrefixes.plate.get(Materials.Titanium)});
 //        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_IV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_EV, 'M', BWItemList.Casing_Tank_5, 'G', ItemList.Field_Generator_HV, 'D', OrePrefixes.circuit.get(Materials.Elite), 'P', OrePrefixes.plate.get(Materials.Titanium)});
     }
 
@@ -90,26 +90,26 @@ public class BWPostloader implements Runnable {
     private void initCraftingRecipes() {
         // Tank Casings
         // TODO: Add high tier glass
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_0.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_0.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(Materials.Steel), new ItemStack(Blocks.glass, 1))
         );
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_1.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_1.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_2.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_2.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedBlackSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_3.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_3.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedRedSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_4.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_4.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumTitaniumCoatedRedSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BWItemList.CasingSuperpressure_5.get(1), bitsd,
+        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_5.get(1), bitsd,
                 getSquareRecipeWithCenter(
                         OrePrefixes.plate.get(BWMaterials.CadmiumTitaniumCoatedTungstensteel),
                         OrePrefixes.glass.get(Materials.Reinforced))

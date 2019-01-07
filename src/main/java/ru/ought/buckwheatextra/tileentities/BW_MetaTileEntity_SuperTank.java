@@ -11,14 +11,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import ru.ought.buckwheatextra.enums.BWTextures;
 
+// Big thanks to Spartak for this code
 public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
     public BW_MetaTileEntity_SuperTank(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 3,
-                String.format("Stores %,d L of fluid", CommonSizeCompute(aTier)));
+                String.format("Stores %,d L of fluid", commonSizeCompute(aTier)));
     }
 
-    public BW_MetaTileEntity_SuperTank(String aName, int aTier, String aDescription,
-                                       ITexture[][][] aTextures) {
+    private BW_MetaTileEntity_SuperTank(String aName, int aTier, String aDescription,
+                                        ITexture[][][] aTextures) {
         super(aName, aTier, 3, aDescription, aTextures);
     }
 
@@ -114,8 +115,9 @@ public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
     public String[] getInfoData() {
         if (mFluid == null) {
             return formatInfoData("No Fluid", 0, getCapacity());
+        } else {
+            return formatInfoData(mFluid.getLocalizedName(), mFluid.amount, getCapacity());
         }
-        return formatInfoData(mFluid.getLocalizedName(), mFluid.amount, getCapacity());
     }
 
     private String[] formatInfoData(String fluidName, int fluidAmount, int fluidCapacity) {
@@ -123,9 +125,9 @@ public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
                 EnumChatFormatting.BLUE + "Super Tank" + EnumChatFormatting.RESET,
                 "Stored Fluid:",
                 EnumChatFormatting.GOLD + fluidName + EnumChatFormatting.RESET,
-                EnumChatFormatting.GREEN + Integer.toString(fluidAmount) + " L" + 
-                        EnumChatFormatting.RESET + " " + EnumChatFormatting.YELLOW + 
-                        Integer.toString(fluidCapacity) + " L" + EnumChatFormatting.RESET
+                EnumChatFormatting.GREEN + Integer.toString(fluidAmount) + " L" +
+                        EnumChatFormatting.RESET + " " + EnumChatFormatting.YELLOW +
+                        fluidCapacity + " L" + EnumChatFormatting.RESET
         };
     }
 
@@ -136,31 +138,23 @@ public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
 
     @Override
     public MetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
+        //noinspection deprecation
         return new BW_MetaTileEntity_SuperTank(mName, mTier, mDescription, mTextures);
     }
 
-    private static int CommonSizeCompute(int tier) {
-        switch (tier) {
-            case 0:
-                return 1000000;
-            case 1:
-                return 4000000;
-            case 2:
-                return 8000000;
-            case 3:
-                return 16000000;
-            case 4:
-                return 32000000;
-            case 5:
-                return 64000000;
-            default:
-                return 0;
+    private static final int[] commonSizes = {250, 1000, 4000, 8000, 16000, 32000};
+
+    private static int commonSizeCompute(int tier) {
+        if ((tier < 0) || (tier >= commonSizes.length)) {
+            return 0;
+        } else {
+            return commonSizes[tier] * 1000;
         }
     }
 
     @Override
     public int getCapacity() {
-        return CommonSizeCompute(mTier);
+        return commonSizeCompute(mTier);
     }
 
     @Override
