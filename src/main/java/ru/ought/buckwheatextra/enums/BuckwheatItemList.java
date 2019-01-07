@@ -14,12 +14,11 @@ import static gregtech.api.enums.GT_Values.W;
  * Copied from Gregtech. =-(
  */
 public enum BuckwheatItemList implements IItemContainer {
-    Super_Tank_ULV, Super_Tank_LV, Super_Tank_MV, Super_Tank_HV, Super_Tank_EV,
-    //Super_Tank_IV,
-    CasingSuperpressure_0, CasingSuperpressure_1, CasingSuperpressure_2, CasingSuperpressure_3, CasingSuperpressure_4;
+    Super_Tank_ULV, Super_Tank_LV, Super_Tank_MV, Super_Tank_HV, Super_Tank_EV, Super_Tank_IV,
+    CasingSuperpressure_0, CasingSuperpressure_1, CasingSuperpressure_2, CasingSuperpressure_3, CasingSuperpressure_4, CasingSuperpressure_5;
 
     public static final BuckwheatItemList[] CasingsSuperpressure = {CasingSuperpressure_0, CasingSuperpressure_1,
-            CasingSuperpressure_2, CasingSuperpressure_3, CasingSuperpressure_4};
+            CasingSuperpressure_2, CasingSuperpressure_3, CasingSuperpressure_4, CasingSuperpressure_5};
 
     private ItemStack mStack;
     private boolean mHasNotBeenSet = true;

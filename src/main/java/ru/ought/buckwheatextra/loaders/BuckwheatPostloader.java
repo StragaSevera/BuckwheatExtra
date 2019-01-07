@@ -76,6 +76,8 @@ public class BuckwheatPostloader implements Runnable {
                 BuckwheatMaterials.CadmiumCoatedRedSteel);
         addCoatingRecipes(ra, BuckwheatMaterials.CadmiumTitaniumSolution, Materials.RedSteel,
                 BuckwheatMaterials.CadmiumTitaniumCoatedRedSteel);
+        addCoatingRecipes(ra, BuckwheatMaterials.CadmiumTitaniumSolution, Materials.TungstenSteel,
+                BuckwheatMaterials.CadmiumTitaniumCoatedTungstensteel);
     }
 
     private void addCoatingRecipes(IGT_RecipeAdder ra, Materials coating, Materials material, Materials resultingMaterial) {
@@ -98,23 +100,28 @@ public class BuckwheatPostloader implements Runnable {
     private void initCraftingRecipes() {
         // Tank Casings
         // TODO: Add high tier glass
-        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_0.get(1L), bitsd,
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_0.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(Materials.Steel), new ItemStack(Blocks.glass, 1))
         );
-        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_1.get(1L), bitsd,
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_1.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_2.get(1L), bitsd,
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_2.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedBlackSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_3.get(1L), bitsd,
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_3.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedRedSteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
-        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_4.get(1L), bitsd,
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_4.get(1), bitsd,
                 getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumTitaniumCoatedRedSteel),
+                        OrePrefixes.glass.get(Materials.Reinforced))
+        );
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.CasingSuperpressure_5.get(1), bitsd,
+                getSquareRecipeWithCenter(
+                        OrePrefixes.plate.get(BuckwheatMaterials.CadmiumTitaniumCoatedTungstensteel),
                         OrePrefixes.glass.get(Materials.Reinforced))
         );
     }

@@ -21,25 +21,29 @@ public class BuckwheatMaterials implements IMaterialHandler {
     public static Materials CadmiumCoatedBlackSteel;
     public static Materials CadmiumCoatedRedSteel;
     public static Materials CadmiumTitaniumCoatedRedSteel;
+    public static Materials CadmiumTitaniumCoatedTungstensteel;
 
     @Override
     public void onMaterialsInit() {
-        CadmiumSolution = new MaterialBuilder(379, TextureSet.SET_FLUID, "Cadmium Solution")
+        CadmiumSolution = new MaterialBuilder(420, TextureSet.SET_FLUID, "Cadmium Solution")
                 .setRGB(48, 47, 47).setColor(Dyes.dyeBlack).addCell().addFluid()
                 .setMaterialList(new MaterialStack(Materials.Cadmium, 1))
                 .constructMaterial();
-        CadmiumTitaniumSolution = new MaterialBuilder(380, TextureSet.SET_FLUID, "Cadmium-Titanium Solution")
+        CadmiumTitaniumSolution = new MaterialBuilder(421, TextureSet.SET_FLUID, "Cadmium-Titanium Solution")
                 .setRGB(80, 47, 80).setColor(Dyes.dyePurple).addCell().addFluid()
                 .setMaterialList(new MaterialStack(Materials.Cadmium, 9), new MaterialStack(Materials.Titanium, 1))
                 .constructMaterial();
 
-        CadmiumCoatedSteel = createCoatedMetal(381, CadmiumSolution, 1, Materials.Steel, 1, 60, 60, 60, Dyes.dyeBlack);
-        CadmiumCoatedBlackSteel = createCoatedMetal(382, CadmiumSolution, 1, Materials.BlackSteel, 1, 20, 20, 20,
-                Dyes.dyeBlack);
-        CadmiumCoatedRedSteel = createCoatedMetal(383, CadmiumSolution, 1, Materials.RedSteel, 1, 60, 20, 20,
-                Dyes.dyeRed);
-        CadmiumTitaniumCoatedRedSteel = createCoatedMetal(384, CadmiumTitaniumSolution, 1, Materials.RedSteel, 9, 80,
-                30, 80, Dyes.dyePurple);
+        CadmiumCoatedSteel = createCoatedMetal(422, CadmiumSolution, 1, Materials.Steel, 1, 60, 60, 60, Dyes.dyeBlack);
+        CadmiumCoatedBlackSteel = createCoatedMetal(423, CadmiumSolution, 1, Materials.BlackSteel, 1,
+                20, 20, 20, Dyes.dyeBlack);
+        CadmiumCoatedRedSteel = createCoatedMetal(424, CadmiumSolution, 1, Materials.RedSteel, 1,
+                60, 20, 20, Dyes.dyeRed);
+        CadmiumTitaniumCoatedRedSteel = createCoatedMetal(425, CadmiumTitaniumSolution, 1, Materials.RedSteel, 9,
+                80, 30, 80, Dyes.dyePurple);
+        CadmiumTitaniumCoatedTungstensteel = createCoatedMetal(426, CadmiumTitaniumSolution, 1,
+                Materials.TungstenSteel, 9,
+                30, 30, 60, Dyes.dyeBlue);
 
     }
 

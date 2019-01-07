@@ -18,7 +18,7 @@ import ru.ought.buckwheatextra.utils.RomanNumber;
 public class Buckwheat_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
     
     // TODO: Implement casings 5+ tier
-    private static final int MAX_TIER = 4;
+    private static final int MAX_TIER = 5;
 
     public Buckwheat_Block_CasingsSuperPressure() {
         super(GT_Item_CasingsSuperPressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
@@ -26,7 +26,7 @@ public class Buckwheat_Block_CasingsSuperPressure extends GT_Block_Casings_Abstr
             Textures.BlockIcons.casingTexturePages[1][i + 96] = new GT_CopiedBlockTexture(this, 6, i);
         }
 
-        for (int i = 0; i < MAX_TIER; i++) {
+        for (int i = 0; i <= MAX_TIER; i++) {
             GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + i + ".name",
                     "Super Pressure Casing " + RomanNumber.toRoman(i).trim());
             BuckwheatItemList.CasingsSuperpressure[i].set(new ItemStack(this, 1, i));
