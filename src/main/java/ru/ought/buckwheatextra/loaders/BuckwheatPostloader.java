@@ -6,6 +6,8 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.internal.IGT_RecipeAdder;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import ru.ought.buckwheatextra.enums.BuckwheatItemList;
 import ru.ought.buckwheatextra.enums.BuckwheatMaterials;
 
@@ -49,45 +51,78 @@ public class BuckwheatPostloader implements Runnable {
         ra.addChemicalRecipe(
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cadmium, 1), null,
                 Materials.Water.getFluid(1000),
-                BuckwheatMaterials.CadmiumSolution.getFluid(1000), null, 10, 2
+                BuckwheatMaterials.CadmiumSolution.getFluid(1000), null, 10 * 20, 2
         );
         ra.addChemicalRecipeForBasicMachineOnly(
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cadmium, 1),
                 Materials.Water.getCells(1), null,
-                GT_Values.NF, BuckwheatMaterials.CadmiumSolution.getCells(1), GT_Values.NI, 10, 2
+                GT_Values.NF, BuckwheatMaterials.CadmiumSolution.getCells(1), GT_Values.NI, 10 * 20, 2
         );
-        // Cadmium coated Steel
+        // Cadmium-Titanium Solution
+        ra.addChemicalRecipe(
+                GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Titanium, 1), null,
+                BuckwheatMaterials.CadmiumSolution.getFluid(1000),
+                BuckwheatMaterials.CadmiumTitaniumSolution.getFluid(1000), null, 60 * 20, 40
+        );
+        ra.addChemicalRecipeForBasicMachineOnly(
+                GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Titanium, 1),
+                BuckwheatMaterials.CadmiumSolution.getCells(1), null,
+                GT_Values.NF, BuckwheatMaterials.CadmiumTitaniumSolution.getCells(1), GT_Values.NI, 60 * 20, 40
+        );
+        // Cadmium Coated Metals
+        addCoatingRecipes(ra, BuckwheatMaterials.CadmiumSolution, Materials.Steel, BuckwheatMaterials.CadmiumCoatedSteel);
+        addCoatingRecipes(ra, BuckwheatMaterials.CadmiumSolution, Materials.BlackSteel, BuckwheatMaterials.CadmiumCoatedBlackSteel);
+        addCoatingRecipes(ra, BuckwheatMaterials.CadmiumSolution, Materials.RedSteel,
+                BuckwheatMaterials.CadmiumCoatedRedSteel);
+        addCoatingRecipes(ra, BuckwheatMaterials.CadmiumTitaniumSolution, Materials.RedSteel,
+                BuckwheatMaterials.CadmiumTitaniumCoatedRedSteel);
+    }
+
+    private void addCoatingRecipes(IGT_RecipeAdder ra, Materials coating, Materials material, Materials resultingMaterial) {
         ra.addElectrolyzerRecipe(
-                GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 1), GT_Values.NI,
-                BuckwheatMaterials.CadmiumSolution.getFluid(1000), GT_Values.NF,
-                GT_OreDictUnificator.get(OrePrefixes.ingot, BuckwheatMaterials.CadmiumCoatedSteel, 1),
+                GT_OreDictUnificator.get(OrePrefixes.ingot, material, 1), GT_Values.NI,
+                coating.getFluid(1000), GT_Values.NF,
+                GT_OreDictUnificator.get(OrePrefixes.ingot, resultingMaterial, 1),
                 GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
-                new int[]{5000}, 30, 24
+                null, 30 * 20, 24
         );
         ra.addElectrolyzerRecipe(
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 1), GT_Values.NI,
-                BuckwheatMaterials.CadmiumSolution.getFluid(1000), GT_Values.NF,
-                GT_OreDictUnificator.get(OrePrefixes.plate, BuckwheatMaterials.CadmiumCoatedSteel, 1),
+                GT_OreDictUnificator.get(OrePrefixes.plate, material, 1), GT_Values.NI,
+                coating.getFluid(1000), GT_Values.NF,
+                GT_OreDictUnificator.get(OrePrefixes.plate, resultingMaterial, 1),
                 GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
-                new int[]{5000}, 30, 24
+                null, 30 * 20, 24
         );
     }
 
     private void initCraftingRecipes() {
         // Tank Casings
+        // TODO: Add high tier glass
         GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_0.get(1L), bitsd,
-                getSquareRecipe(OrePrefixes.plate.get(Materials.Steel), OrePrefixes.pipeLarge.get(Materials.Bronze))
+                getSquareRecipeWithCenter(OrePrefixes.plate.get(Materials.Steel), new ItemStack(Blocks.glass, 1))
         );
         GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_1.get(1L), bitsd,
-                getSquareRecipe(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedSteel),
-                        OrePrefixes.pipeLarge.get(Materials.Steel))
+                getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedSteel),
+                        OrePrefixes.glass.get(Materials.Reinforced))
+        );
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_2.get(1L), bitsd,
+                getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedBlackSteel),
+                        OrePrefixes.glass.get(Materials.Reinforced))
+        );
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_3.get(1L), bitsd,
+                getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumCoatedRedSteel),
+                        OrePrefixes.glass.get(Materials.Reinforced))
+        );
+        GT_ModHandler.addCraftingRecipe(BuckwheatItemList.Casing_Tank_4.get(1L), bitsd,
+                getSquareRecipeWithCenter(OrePrefixes.plate.get(BuckwheatMaterials.CadmiumTitaniumCoatedRedSteel),
+                        OrePrefixes.glass.get(Materials.Reinforced))
         );
     }
 
-    private Object[] getSquareRecipe(Object outer, Object inner) {
+    private Object[] getSquareRecipeWithCenter(Object outer, Object inner) {
         return new Object[]{"OOO", "OIO", "OOO", 'O', outer, 'I', inner};
-    }    
-    
+    }
+
     private Object[] getHollowRecipe(Object outer) {
         return new Object[]{"OOO", "O O", "OOO", 'O', outer};
     }

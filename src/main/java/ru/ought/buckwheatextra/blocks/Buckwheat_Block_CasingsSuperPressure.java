@@ -38,12 +38,13 @@ public class Buckwheat_Block_CasingsSuperPressure
         BuckwheatItemList.Casing_Tank_2.set(new ItemStack(this, 1, 2));
         BuckwheatItemList.Casing_Tank_3.set(new ItemStack(this, 1, 3));
         BuckwheatItemList.Casing_Tank_4.set(new ItemStack(this, 1, 4));
-        BuckwheatItemList.Casing_Tank_5.set(new ItemStack(this, 1, 5));
-        BuckwheatItemList.Casing_Tank_6.set(new ItemStack(this, 1, 6));
-        BuckwheatItemList.Casing_Tank_7.set(new ItemStack(this, 1, 7));
-        BuckwheatItemList.Casing_Tank_8.set(new ItemStack(this, 1, 8));
-        BuckwheatItemList.Casing_Tank_9.set(new ItemStack(this, 1, 9));
-        BuckwheatItemList.Casing_Tank_10.set(new ItemStack(this, 1, 10));
+        // TODO: Invent recipes for casings 5+ tier
+//        BuckwheatItemList.Casing_Tank_5.set(new ItemStack(this, 1, 5));
+//        BuckwheatItemList.Casing_Tank_6.set(new ItemStack(this, 1, 6));
+//        BuckwheatItemList.Casing_Tank_7.set(new ItemStack(this, 1, 7));
+//        BuckwheatItemList.Casing_Tank_8.set(new ItemStack(this, 1, 8));
+//        BuckwheatItemList.Casing_Tank_9.set(new ItemStack(this, 1, 9));
+//        BuckwheatItemList.Casing_Tank_10.set(new ItemStack(this, 1, 10));
         setCreativeTab(BuckwheatExtra.TAB_BUCKWHEAT);
     }
 

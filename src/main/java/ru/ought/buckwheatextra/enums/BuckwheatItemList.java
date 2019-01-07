@@ -16,12 +16,11 @@ import static gregtech.api.enums.GT_Values.W;
  * Copied from Gregtech. =-(
  */
 public enum BuckwheatItemList implements IItemContainer {
-    Super_Tank_ULV, Super_Tank_LV, Super_Tank_MV, Super_Tank_HV, Super_Tank_EV, Super_Tank_IV,
-    Casing_Tank_0, Casing_Tank_1, Casing_Tank_2, Casing_Tank_3, Casing_Tank_4, Casing_Tank_5,
-    Casing_Tank_6, Casing_Tank_7, Casing_Tank_8, Casing_Tank_9, Casing_Tank_10;
-    
-    public static Fluid sCadmiumSolution;
-    
+    Super_Tank_ULV, Super_Tank_LV, Super_Tank_MV, Super_Tank_HV, Super_Tank_EV, 
+    //Super_Tank_IV,
+    Casing_Tank_0, Casing_Tank_1, Casing_Tank_2, Casing_Tank_3, Casing_Tank_4;
+    //, Casing_Tank_5, Casing_Tank_6, Casing_Tank_7, Casing_Tank_8, Casing_Tank_9, Casing_Tank_10;
+        
     private ItemStack mStack;
     private boolean mHasNotBeenSet = true;
 
