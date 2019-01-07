@@ -7,7 +7,10 @@ import gregtech.api.interfaces.internal.IGT_RecipeAdder;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import ru.ought.buckwheatextra.api.BW_API;
+import ru.ought.buckwheatextra.blocks.BW_Block_CasingsSuperpressure;
 import ru.ought.buckwheatextra.enums.BWItemList;
 import ru.ought.buckwheatextra.enums.BWMaterials;
 
@@ -19,21 +22,7 @@ public class BWPostloader implements Runnable {
     @Override
     public void run() {
         initMachineRecipes(GT_Values.RA);
-
         initCraftingRecipes();
-//        BWItemList.Super_Tank_ULV.set(new BW_MetaTileEntity_SuperTank(139, "super.tank.tier.00", "Super Tank (Steam Age)", 0).getStackForm(1L));
-//        BWItemList.Super_Tank_LV.set(new BW_MetaTileEntity_SuperTank(140, "super.tank.tier.01", "Super Tank I", 1).getStackForm(1L));
-//        BWItemList.Super_Tank_MV.set(new BW_MetaTileEntity_SuperTank(141, "super.tank.tier.02", "Super Tank II", 2).getStackForm(1L));
-//        BWItemList.Super_Tank_HV.set(new BW_MetaTileEntity_SuperTank(142, "super.tank.tier.03", "Super Tank III", 3).getStackForm(1L));
-//        BWItemList.Super_Tank_EV.set(new BW_MetaTileEntity_SuperTank(143, "super.tank.tier.04", "Super Tank IV", 4).getStackForm(1L));
-//        BWItemList.Super_Tank_IV.set(new BW_MetaTileEntity_SuperTank(144, "super.tank.tier.05", "Super Tank V", 5).getStackForm(1L));
-
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_ULV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_LV, 'M', BWItemList.Casing_Superpressure_0, 'G', OrePrefixes.pipeMedium.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Primitive), 'P', OrePrefixes.plate.get(Materials.Steel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_LV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_MV, 'M', BWItemList.Casing_Superpressure_1, 'G', OrePrefixes.pipeLarge.get(Materials.Bronze), 'D', OrePrefixes.circuit.get(Materials.Basic), 'P', OrePrefixes.plate.get(Materials.Aluminium)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_MV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.Casing_Superpressure_2, 'G', OrePrefixes.pipeLarge.get(Materials.Steel), 'D', OrePrefixes.circuit.get(Materials.Good), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_HV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_HV, 'M', BWItemList.Casing_Superpressure_3, 'G', ItemList.Field_Generator_LV, 'D', OrePrefixes.circuit.get(Materials.Advanced), 'P', OrePrefixes.plate.get(Materials.StainlessSteel)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_EV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_EV, 'M', BWItemList.Casing_Superpressure_4, 'G', ItemList.Field_Generator_MV, 'D', OrePrefixes.circuit.get(Materials.Data),'P', OrePrefixes.plate.get(Materials.Titanium)});
-//        GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tank_IV.get(1L), bitsd,  new Object[]{"DGD", "PMP", "DUD", 'U', ItemList.Electric_Pump_EV, 'M', BWItemList.Casing_Tank_5, 'G', ItemList.Field_Generator_HV, 'D', OrePrefixes.circuit.get(Materials.Elite), 'P', OrePrefixes.plate.get(Materials.Titanium)});
     }
 
     private void initMachineRecipes(IGT_RecipeAdder ra) {
@@ -88,39 +77,30 @@ public class BWPostloader implements Runnable {
     }
 
     private void initCraftingRecipes() {
-        // Tank Casings
-        // TODO: Add high tier glass
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_0.get(1), bitsd,
-                getSquareRecipeWithCenter(OrePrefixes.plate.get(Materials.Steel), new ItemStack(Blocks.glass, 1))
-        );
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_1.get(1), bitsd,
-                getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedSteel),
-                        OrePrefixes.glass.get(Materials.Reinforced))
-        );
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_2.get(1), bitsd,
-                getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedBlackSteel),
-                        OrePrefixes.glass.get(Materials.Reinforced))
-        );
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_3.get(1), bitsd,
-                getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumCoatedRedSteel),
-                        OrePrefixes.glass.get(Materials.Reinforced))
-        );
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_4.get(1), bitsd,
-                getSquareRecipeWithCenter(OrePrefixes.plate.get(BWMaterials.CadmiumTitaniumCoatedRedSteel),
-                        OrePrefixes.glass.get(Materials.Reinforced))
-        );
-        GT_ModHandler.addCraftingRecipe(BWItemList.Casing_Superpressure_5.get(1), bitsd,
-                getSquareRecipeWithCenter(
-                        OrePrefixes.plate.get(BWMaterials.CadmiumTitaniumCoatedTungstensteel),
-                        OrePrefixes.glass.get(Materials.Reinforced))
-        );
-    }
-
-    private Object[] getSquareRecipeWithCenter(Object outer, Object inner) {
-        return new Object[]{"OOO", "OIO", "OOO", 'O', outer, 'I', inner};
-    }
-
-    private Object[] getHollowRecipe(Object outer) {
-        return new Object[]{"OOO", "O O", "OOO", 'O', outer};
+        // Superpressure Casings
+        Materials[] platesCasing = {Materials.Steel, BWMaterials.CadmiumCoatedSteel,
+                BWMaterials.CadmiumCoatedBlackSteel, BWMaterials.CadmiumCoatedRedSteel, 
+                BWMaterials.CadmiumTitaniumCoatedRedSteel,
+                BWMaterials.CadmiumTitaniumCoatedTungstensteel};
+        for (int i = 0; i <= BW_Block_CasingsSuperpressure.MAX_TIER; i++) {
+            // TODO: Add high tier glass
+            Object glass = (i == 0) ? new ItemStack(Blocks.glass, 1) : OrePrefixes.glass.get(Materials.Reinforced);
+            GT_ModHandler.addCraftingRecipe(BWItemList.Casings_Superpressure[i].get(1), bitsd,
+                    new Object[]{"OOO", "OIO", "OOO", 
+                            'O', OrePrefixes.plate.get(platesCasing[i]), 
+                            'I', glass});
+        }
+        
+        // Super Tanks
+        Materials[] pipesTank = {Materials.Bronze, Materials.Steel, Materials.Plastic,
+                Materials.Polytetrafluoroethylene, Materials.Titanium, Materials.Ultimate};
+        for (int i = 0; i <= BW_Block_CasingsSuperpressure.MAX_TIER; i++) {
+            GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tanks[i].get(1), bitsd, 
+                    new Object[]{"DGD", "PMP", "DUD", 'U', BW_API.getPumpTiered(i), 
+                            'M', BWItemList.Casings_Superpressure[i], 
+                            'G', OrePrefixes.pipeMedium.get(pipesTank[i]), 
+                            'D', BW_API.getCircuitTiered(i), 
+                            'P', OrePrefixes.plate.get(platesCasing[i])});
+        }
     }
 }

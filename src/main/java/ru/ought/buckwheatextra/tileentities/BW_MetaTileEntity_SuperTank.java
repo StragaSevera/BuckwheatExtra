@@ -142,13 +142,13 @@ public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
         return new BW_MetaTileEntity_SuperTank(mName, mTier, mDescription, mTextures);
     }
 
-    private static final int[] commonSizes = {250, 1000, 4000, 8000, 16000, 32000};
+    private static final int[] commonSizeInBuckets = {250, 1000, 4000, 8000, 16000, 32000};
 
     private static int commonSizeCompute(int tier) {
-        if ((tier < 0) || (tier >= commonSizes.length)) {
+        if ((tier < 0) || (tier >= commonSizeInBuckets.length)) {
             return 0;
         } else {
-            return commonSizes[tier] * 1000;
+            return commonSizeInBuckets[tier] * 1000;
         }
     }
 

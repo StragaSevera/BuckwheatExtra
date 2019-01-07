@@ -16,7 +16,7 @@ public class BWPreloader implements Runnable {
 
         int[] superTankIDs = {22000, 22001, 22002, 22003, 22004, 22005};
         for (int i = 0; i <= BW_Block_CasingsSuperpressure.MAX_TIER; i++) {
-            BWItemList.Super_Tank_ULV.set(new BW_MetaTileEntity_SuperTank(superTankIDs[i], 
+            BWItemList.Super_Tanks[i].set(new BW_MetaTileEntity_SuperTank(superTankIDs[i], 
                     "super.tank.tier." + i, 
                     "Super Tank " + GT_Values.VN[i], i).getStackForm(1));
         }
