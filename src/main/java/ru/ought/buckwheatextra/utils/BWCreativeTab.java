@@ -4,8 +4,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
-public class BuckwheatCreativeTab extends CreativeTabs {
-    public BuckwheatCreativeTab() {
+public class BWCreativeTab extends CreativeTabs {
+    public BWCreativeTab() {
         super("buckwheatExtra");
     }
 

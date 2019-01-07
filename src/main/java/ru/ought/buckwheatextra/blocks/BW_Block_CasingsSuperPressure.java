@@ -11,17 +11,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import ru.ought.buckwheatextra.BuckwheatExtra;
-import ru.ought.buckwheatextra.enums.BuckwheatItemList;
-import ru.ought.buckwheatextra.enums.BuckwheatTextures;
+import ru.ought.buckwheatextra.enums.BWItemList;
+import ru.ought.buckwheatextra.enums.BWTextures;
 import ru.ought.buckwheatextra.utils.RomanNumber;
 
-public class Buckwheat_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
+public class BW_Block_CasingsSuperPressure extends GT_Block_Casings_Abstract {
     
     // TODO: Implement casings 5+ tier
     private static final int MAX_TIER = 5;
 
-    public Buckwheat_Block_CasingsSuperPressure() {
-        super(GT_Item_CasingsSuperPressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
+    public BW_Block_CasingsSuperPressure() {
+        super(BW_Item_CasingsSuperPressure.class, "buckwheat.blockcasingssuperpressure", GT_Material_Casings.INSTANCE);
         for (int i = 0; i < 16; i = (i + 1)) {
             Textures.BlockIcons.casingTexturePages[1][i + 96] = new GT_CopiedBlockTexture(this, 6, i);
         }
@@ -29,7 +29,7 @@ public class Buckwheat_Block_CasingsSuperPressure extends GT_Block_Casings_Abstr
         for (int i = 0; i <= MAX_TIER; i++) {
             GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + i + ".name",
                     "Super Pressure Casing " + RomanNumber.toRoman(i).trim());
-            BuckwheatItemList.CasingsSuperpressure[i].set(new ItemStack(this, 1, i));
+            BWItemList.CasingsSuperpressure[i].set(new ItemStack(this, 1, i));
         }
 
         setCreativeTab(BuckwheatExtra.TAB_BUCKWHEAT);
@@ -43,9 +43,9 @@ public class Buckwheat_Block_CasingsSuperPressure extends GT_Block_Casings_Abstr
         } else if (aSide == 1) {
             return Textures.BlockIcons.MACHINECASINGS_TOP[aMeta].getIcon();
         } else if ((aMeta >= 0) && (aMeta <= 15)) {
-            return BuckwheatTextures.MACHINE_CASING_SUPERPRESSURE_ARRAY[aMeta].getIcon();
+            return BWTextures.MACHINE_CASING_SUPERPRESSURE_ARRAY[aMeta].getIcon();
         } else {
-            return BuckwheatTextures.MACHINE_CASING_SUPREPRESSURE_DEFAULT.getIcon();
+            return BWTextures.MACHINE_CASING_SUPREPRESSURE_DEFAULT.getIcon();
         }
     }
 

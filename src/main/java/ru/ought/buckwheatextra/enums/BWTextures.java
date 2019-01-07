@@ -3,7 +3,7 @@ package ru.ought.buckwheatextra.enums;
 import gregtech.api.enums.Textures.BlockIcons.CustomIcon;
 
 // TODO: Refactor texture loading.
-public class BuckwheatTextures {
+public class BWTextures {
     public static final CustomIcon OVERLAY_STANK = new CustomIcon("buckwheat" +
             "/OVERLAY_STANK");
     public static final CustomIcon MACHINE_CASING_SUPREPRESSURE_DEFAULT = new CustomIcon("buckwheat" +

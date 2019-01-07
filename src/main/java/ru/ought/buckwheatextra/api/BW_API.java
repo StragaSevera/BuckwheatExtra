@@ -3,6 +3,6 @@ package ru.ought.buckwheatextra.api;
 
 import net.minecraft.block.Block;
 
-public class BuckwheatAPI {
+public class BW_API {
     public static Block BlockCasingSuperPressure;
 }

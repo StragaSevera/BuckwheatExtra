@@ -6,15 +6,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Materials;
-import gregtech.api.util.GT_Log;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.ought.buckwheatextra.enums.BuckwheatMaterials;
-import ru.ought.buckwheatextra.loaders.BuckwheatPostloader;
-import ru.ought.buckwheatextra.loaders.BuckwheatPreloader;
-import ru.ought.buckwheatextra.utils.BuckwheatCreativeTab;
+import ru.ought.buckwheatextra.enums.BWMaterials;
+import ru.ought.buckwheatextra.loaders.BWPostloader;
+import ru.ought.buckwheatextra.loaders.BWPreloader;
+import ru.ought.buckwheatextra.utils.BWCreativeTab;
 
 @Mod(
         modid = BuckwheatExtra.MOD_ID,
@@ -27,14 +26,14 @@ public class BuckwheatExtra {
     public static final String MOD_ID = "buckwheatextra";
     static final String MOD_NAME = "Buckwheat Extra";
     static final String VERSION = "1.0";
-    public static final CreativeTabs TAB_BUCKWHEAT = new BuckwheatCreativeTab();
+    public static final CreativeTabs TAB_BUCKWHEAT = new BWCreativeTab();
 
     private static final Logger Logger = LogManager.getLogger("ru.ought.buckwheatextra");
 
     public BuckwheatExtra() {
-        GregTech_API.sAfterGTPreload.add(new BuckwheatPreloader());
-        GregTech_API.sAfterGTPostload.add(new BuckwheatPostloader());
-        Materials.add(new BuckwheatMaterials());
+        GregTech_API.sAfterGTPreload.add(new BWPreloader());
+        GregTech_API.sAfterGTPostload.add(new BWPostloader());
+        Materials.add(new BWMaterials());
     }
 
     public static void log(String string) {

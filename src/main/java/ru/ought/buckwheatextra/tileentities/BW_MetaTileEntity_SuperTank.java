@@ -9,21 +9,20 @@ import gregtech.api.objects.GT_RenderedTexture;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
-import ru.ought.buckwheatextra.BuckwheatExtra;
-import ru.ought.buckwheatextra.enums.BuckwheatTextures;
+import ru.ought.buckwheatextra.enums.BWTextures;
 
-public class GT_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
-    public GT_MetaTileEntity_SuperTank(int aID, String aName, String aNameRegional, int aTier) {
+public class BW_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
+    public BW_MetaTileEntity_SuperTank(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 3,
                 String.format("Stores %,d L of fluid", CommonSizeCompute(aTier)));
     }
 
-    public GT_MetaTileEntity_SuperTank(String aName, int aTier, String aDescription,
+    public BW_MetaTileEntity_SuperTank(String aName, int aTier, String aDescription,
                                        ITexture[][][] aTextures) {
         super(aName, aTier, 3, aDescription, aTextures);
     }
 
-    public GT_MetaTileEntity_SuperTank(String aName, int aTier, String[] aDescription,
+    public BW_MetaTileEntity_SuperTank(String aName, int aTier, String[] aDescription,
                                        ITexture[][][] aTextures) {
         super(aName, aTier, 3, aDescription, aTextures);
     }
@@ -39,7 +38,7 @@ public class GT_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
                                  boolean aActive, boolean aRedstone) {
         if (aSide == 1)
             return new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][aColorIndex + 1],
-                    new GT_RenderedTexture(BuckwheatTextures.OVERLAY_STANK)};
+                    new GT_RenderedTexture(BWTextures.OVERLAY_STANK)};
         else return new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][aColorIndex + 1]};
     }
 
@@ -137,7 +136,7 @@ public class GT_MetaTileEntity_SuperTank extends GT_MetaTileEntity_BasicTank {
 
     @Override
     public MetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new GT_MetaTileEntity_SuperTank(mName, mTier, mDescription, mTextures);
+        return new BW_MetaTileEntity_SuperTank(mName, mTier, mDescription, mTextures);
     }
 
     private static int CommonSizeCompute(int tier) {

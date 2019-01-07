@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BuckwheatMaterials implements IMaterialHandler {
+public class BWMaterials implements IMaterialHandler {
     public static Materials CadmiumSolution;
     public static Materials CadmiumTitaniumSolution;
     public static Materials CadmiumCoatedSteel;
