@@ -15,6 +15,7 @@ buildscript {
     }
 }
 
+
 apply plugin: 'forge'
 idea.module.inheritOutputDirs = true
 
@@ -28,9 +29,15 @@ version = "${config.buckwheatextra.version}"
 group= "ru.ought.buckwheatextra"
 archivesBaseName = "buckwheatextra"
 
+sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "eclipse"
+//    mappings = "stable_12" // Alas, Gregtech does not work well with updated mappings
 }
 
 configurations {
@@ -84,7 +91,6 @@ repositories {
 dependencies {
     provided "codechicken:CodeChickenLib:${config.minecraft.version}-${config.codechickenlib.version}:dev"
     provided "codechicken:CodeChickenCore:${config.minecraft.version}-${config.codechickencore.version}:dev"
-//    provided "codechicken:NotEnoughItems:${config.minecraft.version}-${config.nei.version}:dev"
     provided "codechicken:NotEnoughItems:${config.minecraft.version}-${config.nei.version}:dev"
     provided "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
 }
