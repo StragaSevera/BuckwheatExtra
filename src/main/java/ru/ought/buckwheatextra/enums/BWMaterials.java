@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@SuppressWarnings("WeakerAccess")
 public class BWMaterials implements IMaterialHandler {
     public static Materials CadmiumSolution;
     public static Materials CadmiumTitaniumSolution;
@@ -22,17 +23,20 @@ public class BWMaterials implements IMaterialHandler {
     public static Materials CadmiumCoatedRedSteel;
     public static Materials CadmiumTitaniumCoatedRedSteel;
     public static Materials CadmiumTitaniumCoatedTungstensteel;
+    public static Materials CadmiumSulfate;
+    public static Materials TitaniumSulfate;
+    public static Materials CadmiumTitaniumSulfate;
 
     @Override
     public void onMaterialsInit() {
         CadmiumSolution = new MaterialBuilder(420, TextureSet.SET_FLUID, "Cadmium Solution")
                 .setRGB(48, 47, 47).setColor(Dyes.dyeBlack).addCell().addFluid()
                 .setMaterialList(new MaterialStack(Materials.Cadmium, 1))
-                .constructMaterial();
+                .addElectrolyzerRecipe().constructMaterial();
         CadmiumTitaniumSolution = new MaterialBuilder(421, TextureSet.SET_FLUID, "Cadmium-Titanium Solution")
                 .setRGB(80, 47, 80).setColor(Dyes.dyePurple).addCell().addFluid()
                 .setMaterialList(new MaterialStack(Materials.Cadmium, 9), new MaterialStack(Materials.Titanium, 1))
-                .constructMaterial();
+                .addElectrolyzerRecipe().constructMaterial();
 
         CadmiumCoatedSteel = createCoatedMetal(422, CadmiumSolution, 1, Materials.Steel, 1, 60, 60, 60, Dyes.dyeBlack);
         CadmiumCoatedBlackSteel = createCoatedMetal(423, CadmiumSolution, 1, Materials.BlackSteel, 1,
@@ -45,6 +49,21 @@ public class BWMaterials implements IMaterialHandler {
                 Materials.TungstenSteel, 9,
                 30, 30, 60, Dyes.dyeBlue);
 
+        CadmiumSulfate = new MaterialBuilder(427, TextureSet.SET_DULL, "Cadmium Sulfate")
+                .setRGB(150, 150, 50).setColor(Dyes.dyeYellow).addDustItems()
+                .setMaterialList(new MaterialStack(Materials.Cadmium, 1), new MaterialStack(Materials.Sulfur, 1),
+                        new MaterialStack(Materials.Oxygen, 4))
+                .addElectrolyzerRecipe().constructMaterial();
+        TitaniumSulfate = new MaterialBuilder(428, TextureSet.SET_DULL, "Titanium Sulfate")
+                .setRGB(150, 80, 50).setColor(Dyes.dyePink).addDustItems()
+                .setMaterialList(new MaterialStack(Materials.Titanium, 1),
+                        new MaterialStack(Materials.Sulfur, 2), new MaterialStack(Materials.Oxygen, 8))
+                .addElectrolyzerRecipe().constructMaterial();
+        CadmiumTitaniumSulfate = new MaterialBuilder(429, TextureSet.SET_DULL, "Cadmium-Titanium Sulfate")
+                .setRGB(130, 65, 50).setColor(Dyes.dyeYellow).addDustItems()
+                .setMaterialList(new MaterialStack(CadmiumSulfate, 9),
+                        new MaterialStack(TitaniumSulfate, 1))
+                .addCentrifugeRecipe().constructMaterial();
     }
 
     private List<Materials> disableOrePrefixesList = new ArrayList<>();

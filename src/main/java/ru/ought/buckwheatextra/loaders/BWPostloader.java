@@ -7,7 +7,6 @@ import gregtech.api.interfaces.internal.IGT_RecipeAdder;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ru.ought.buckwheatextra.api.BW_API;
 import ru.ought.buckwheatextra.blocks.BW_Block_CasingsSuperpressure;
@@ -48,18 +47,29 @@ public class BWPostloader implements Runnable {
                 BWMaterials.CadmiumSolution.getCells(1), null,
                 GT_Values.NF, BWMaterials.CadmiumTitaniumSolution.getCells(1), GT_Values.NI, 60 * 20, 40
         );
+        ra.addChemicalRecipe(
+                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Titanium, 1), null,
+                BWMaterials.CadmiumSolution.getFluid(9000),
+                BWMaterials.CadmiumTitaniumSolution.getFluid(9000), null, 60 * 20, 40
+        );
+        ra.addChemicalRecipeForBasicMachineOnly(
+                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Titanium, 1),
+                BWMaterials.CadmiumSolution.getCells(9), null,
+                GT_Values.NF, BWMaterials.CadmiumTitaniumSolution.getCells(9), GT_Values.NI, 60 * 20, 40
+        );
         // Cadmium Coated Metals
-        addCoatingRecipes(ra, BWMaterials.CadmiumSolution, Materials.Steel, BWMaterials.CadmiumCoatedSteel);
-        addCoatingRecipes(ra, BWMaterials.CadmiumSolution, Materials.BlackSteel, BWMaterials.CadmiumCoatedBlackSteel);
+        addCoatingRecipes(ra, BWMaterials.CadmiumSolution, Materials.Steel, BWMaterials.CadmiumCoatedSteel, BWMaterials.CadmiumSulfate);
+        addCoatingRecipes(ra, BWMaterials.CadmiumSolution, Materials.BlackSteel, BWMaterials.CadmiumCoatedBlackSteel, BWMaterials.CadmiumSulfate);
         addCoatingRecipes(ra, BWMaterials.CadmiumSolution, Materials.RedSteel,
-                BWMaterials.CadmiumCoatedRedSteel);
+                BWMaterials.CadmiumCoatedRedSteel, BWMaterials.CadmiumSulfate);
         addCoatingRecipes(ra, BWMaterials.CadmiumTitaniumSolution, Materials.RedSteel,
-                BWMaterials.CadmiumTitaniumCoatedRedSteel);
+                BWMaterials.CadmiumTitaniumCoatedRedSteel, BWMaterials.CadmiumTitaniumSulfate);
         addCoatingRecipes(ra, BWMaterials.CadmiumTitaniumSolution, Materials.TungstenSteel,
-                BWMaterials.CadmiumTitaniumCoatedTungstensteel);
+                BWMaterials.CadmiumTitaniumCoatedTungstensteel, BWMaterials.CadmiumTitaniumSulfate);
+
     }
 
-    private void addCoatingRecipes(IGT_RecipeAdder ra, Materials coating, Materials material, Materials resultingMaterial) {
+    private void addCoatingRecipes(IGT_RecipeAdder ra, Materials coating, Materials material, Materials resultingMaterial, Materials coatingSalt) {
         ra.addElectrolyzerRecipe(
                 GT_OreDictUnificator.get(OrePrefixes.ingot, material, 1), GT_Values.NI,
                 coating.getFluid(1000), GT_Values.NF,
@@ -74,32 +84,40 @@ public class BWPostloader implements Runnable {
                 GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
                 null, 30 * 20, 24
         );
+        ra.addChemicalRecipe(resultingMaterial.getIngots(1), GT_Values.NI,
+                Materials.SulfuricAcid.getFluid(1000),
+                Materials.DilutedSulfuricAcid.getFluid(1000), material.getIngots(1),
+                coatingSalt.getDust(3), 10 * 20,10);
+        ra.addChemicalRecipe(resultingMaterial.getPlates(1), GT_Values.NI,
+                Materials.SulfuricAcid.getFluid(1000),
+                Materials.DilutedSulfuricAcid.getFluid(1000), material.getPlates(1),
+                coatingSalt.getDust(3), 10 * 20,10);
     }
 
     private void initCraftingRecipes() {
         // Superpressure Casings
         Materials[] platesCasing = {Materials.Steel, BWMaterials.CadmiumCoatedSteel,
-                BWMaterials.CadmiumCoatedBlackSteel, BWMaterials.CadmiumCoatedRedSteel, 
+                BWMaterials.CadmiumCoatedBlackSteel, BWMaterials.CadmiumCoatedRedSteel,
                 BWMaterials.CadmiumTitaniumCoatedRedSteel,
                 BWMaterials.CadmiumTitaniumCoatedTungstensteel};
         for (int i = 0; i <= BW_Block_CasingsSuperpressure.MAX_TIER; i++) {
             // TODO: Add high tier glass
             Object glass = (i == 0) ? new ItemStack(Blocks.glass, 1) : OrePrefixes.glass.get(Materials.Reinforced);
             GT_ModHandler.addCraftingRecipe(BWItemList.Casings_Superpressure[i].get(1), bitsd,
-                    new Object[]{"OOO", "OIO", "OOO", 
-                            'O', OrePrefixes.plate.get(platesCasing[i]), 
+                    new Object[]{"OOO", "OIO", "OOO",
+                            'O', OrePrefixes.plate.get(platesCasing[i]),
                             'I', glass});
         }
-        
+
         // Super Tanks
         Materials[] pipesTank = {Materials.Bronze, Materials.Steel, Materials.Plastic,
                 Materials.Polytetrafluoroethylene, Materials.Titanium, Materials.Ultimate};
         for (int i = 0; i <= BW_Block_CasingsSuperpressure.MAX_TIER; i++) {
-            GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tanks[i].get(1), bitsd, 
-                    new Object[]{"DGD", "PMP", "DUD", 'U', BW_API.getPumpTiered(i), 
-                            'M', BWItemList.Casings_Superpressure[i], 
-                            'G', OrePrefixes.pipeMedium.get(pipesTank[i]), 
-                            'D', BW_API.getCircuitTiered(i), 
+            GT_ModHandler.addCraftingRecipe(BWItemList.Super_Tanks[i].get(1), bitsd,
+                    new Object[]{"DGD", "PMP", "DUD", 'U', BW_API.getPumpTiered(i),
+                            'M', BWItemList.Casings_Superpressure[i],
+                            'G', OrePrefixes.pipeMedium.get(pipesTank[i]),
+                            'D', BW_API.getCircuitTiered(i),
                             'P', OrePrefixes.plate.get(platesCasing[i])});
         }
     }
