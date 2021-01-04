@@ -5,8 +5,10 @@ import cpw.mods.fml.common.SidedProxy
 import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import cpw.mods.fml.common.event.FMLPreInitializationEvent
+import gregtech.api.GregTech_API
 import net.minecraft.creativetab.CreativeTabs
 import org.apache.logging.log4j.LogManager
+import ru.ought.buckwheatextra.loaders.Preloader
 import ru.ought.buckwheatextra.proxy.CommonProxy
 import ru.ought.buckwheatextra.utils.BWCreativeTab
 
@@ -34,18 +36,22 @@ object BuckwheatExtra {
     @Mod.InstanceFactory
     fun instance() = BuckwheatExtra
 
+    init {
+        GregTech_API.sAfterGTPreload.add(Preloader())
+    }
+
     @Mod.EventHandler
-    fun preInit(e: FMLPreInitializationEvent) {
+    fun preInitialize(e: FMLPreInitializationEvent) {
         proxy.preInit(e)
     }
 
     @Mod.EventHandler
-    fun init(e: FMLInitializationEvent) {
+    fun initialize(e: FMLInitializationEvent) {
         proxy.init(e)
     }
 
     @Mod.EventHandler
-    fun postInit(e: FMLPostInitializationEvent) {
+    fun postInitialize(e: FMLPostInitializationEvent) {
         proxy.postInit(e)
     }
 }
