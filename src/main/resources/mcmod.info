@@ -1,0 +1,16 @@
+[
+{
+  "modid": "buckwheatextra",
+  "name": "Buckwheat Extra",
+  "description": "A big portion of buckwheat for GregTech!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["StragaSevera"],
+  "credits": "To Spartak, for allowing me to use his code, and to Pilad, for prodding me to improve it",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
