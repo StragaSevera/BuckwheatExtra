@@ -71,14 +71,6 @@ configurations.implementation.get().extendsFrom(shade)
 
 dependencies {
     shade(kotlin("stdlib"))
-//    implementation("codechicken:CodeChickenLib:${pExt("minecraft.version")}-${pExt("codechickenlib.version")}:dev")
-//    implementation("codechicken:CodeChickenCore:${pExt("minecraft.version")}-${pExt("codechickencore.version")}:dev")
-//    implementation("codechicken:NotEnoughItems:${pExt("minecraft.version")}-${pExt("nei.version")}:dev")
-//    implementation("net.industrial-craft:industrialcraft-2:${pExt("ic2.version")}:dev")
-//    implementation("com.enderio.core:EnderCore:${pExt("enderiocore.version")}:dev")
-//    implementation("com.enderio:EnderIO:${pExt("enderio.version")}:dev") {
-//        isTransitive = false
-//    }
     implementation(fileTree("dir" to "libs", "include" to "*.jar"))
 }
 
