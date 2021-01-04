@@ -6,8 +6,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent
 import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import cpw.mods.fml.common.event.FMLPreInitializationEvent
 import gregtech.api.GregTech_API
+import gregtech.api.enums.Materials
 import net.minecraft.creativetab.CreativeTabs
 import org.apache.logging.log4j.LogManager
+import ru.ought.buckwheatextra.enums.BWMaterials
+import ru.ought.buckwheatextra.loaders.Postloader
 import ru.ought.buckwheatextra.loaders.Preloader
 import ru.ought.buckwheatextra.proxy.CommonProxy
 import ru.ought.buckwheatextra.utils.BWCreativeTab
@@ -24,8 +27,7 @@ fun log(string: String) {
 }
 
 @Mod(modid = MOD_ID, version = VERSION, name = MOD_NAME,
-    dependencies = "")
-//    dependencies = "required-after:IC2;required-after:gregtech")
+    dependencies = "required-after:IC2;required-after:gregtech")
 object BuckwheatExtra {
     @JvmStatic
     @SidedProxy(clientSide = "ru.ought.buckwheatextra.proxy.ClientProxy",
@@ -38,6 +40,8 @@ object BuckwheatExtra {
 
     init {
         GregTech_API.sAfterGTPreload.add(Preloader())
+        GregTech_API.sAfterGTPostload.add(Postloader())
+        Materials.add(BWMaterials())
     }
 
     @Mod.EventHandler
