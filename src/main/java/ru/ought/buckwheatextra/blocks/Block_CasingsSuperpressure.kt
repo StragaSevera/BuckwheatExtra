@@ -8,9 +8,11 @@ import gregtech.api.objects.GT_CopiedBlockTexture
 import gregtech.api.util.GT_LanguageManager
 import gregtech.common.blocks.GT_Block_Casings_Abstract
 import gregtech.common.blocks.GT_Material_Casings
+import net.minecraft.item.ItemStack
 import net.minecraft.util.IIcon
 import net.minecraft.world.IBlockAccess
 import ru.ought.buckwheatextra.TAB_BUCKWHEAT
+import ru.ought.buckwheatextra.enums.BWItemList
 import ru.ought.buckwheatextra.enums.BWTextures
 import ru.ought.buckwheatextra.utils.toRoman
 
@@ -31,7 +33,7 @@ class Block_CasingsSuperpressure : GT_Block_Casings_Abstract(
         for (i in 0..MAX_TIER) {
             GT_LanguageManager.addStringLocalization("$unlocalizedName.$i.name",
                 "Super Pressure Casing " + toRoman(i).trim())
-//            BWItemList.Casings_Superpressure.get(i).set(ItemStack(this, 1, i))
+            BWItemList.Casings_Superpressure[i].set(ItemStack(this, 1, i))
         }
         setCreativeTab(TAB_BUCKWHEAT)
     }
