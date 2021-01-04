@@ -1,16 +1,15 @@
 package ru.ought.buckwheatextra.tileentities
 
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicTank
-import ru.ought.buckwheatextra.tileentities.BW_MetaTileEntity_SuperTank
+import gregtech.api.enums.Textures
 import gregtech.api.interfaces.ITexture
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity
-import gregtech.api.enums.Textures
-import gregtech.api.objects.GT_RenderedTexture
-import ru.ought.buckwheatextra.enums.BWTextures
-import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.util.EnumChatFormatting
 import gregtech.api.metatileentity.MetaTileEntity
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicTank
+import gregtech.api.objects.GT_RenderedTexture
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.util.EnumChatFormatting.*
+import ru.ought.buckwheatextra.enums.BWTextures
 
 // Big thanks to Spartak for this code
 class BW_MetaTileEntity_SuperTank : GT_MetaTileEntity_BasicTank {
@@ -122,12 +121,10 @@ class BW_MetaTileEntity_SuperTank : GT_MetaTileEntity_BasicTank {
 
     private fun formatInfoData(fluidName: String, fluidAmount: Int, fluidCapacity: Int): Array<String> {
         return arrayOf(
-            EnumChatFormatting.BLUE.toString() + "Super Tank" + EnumChatFormatting.RESET,
+            "${BLUE}Super Tank$RESET",
             "Stored Fluid:",
-            EnumChatFormatting.GOLD.toString() + fluidName + EnumChatFormatting.RESET,
-            EnumChatFormatting.GREEN.toString() + fluidAmount.toString() + " L" +
-                    EnumChatFormatting.RESET + " " + EnumChatFormatting.YELLOW +
-                    fluidCapacity + " L" + EnumChatFormatting.RESET
+            "${GOLD}$fluidName$RESET",
+            "$GREEN$fluidAmount L$RESET $YELLOW$fluidCapacity L",
         )
     }
 
