@@ -10,39 +10,39 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven {
-        name = "chickenbones"
-        url = uri("http://chickenbones.net/maven/")
-    }
-    maven {
-        name = "ic2, forestry"
-        url = uri("http://maven.ic2.player.to/")
-    }
-    maven { // EnderIO & EnderCore
-        name = "tterrag Repo"
-        url = uri("http://maven.tterrag.com")
-    }
-    maven("http://www.ryanliptak.com/maven/")
-    ivy {
-        name = "BuildCraft"
-        artifactPattern("http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]")
-    }
-    ivy {
-        name = "CoFHLib"
-        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("cofhlib.cf")}/[module]-[revision].[ext]")
-    }
-    ivy {
-        name = "CoFHCore"
-        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("cofhcore.cf")}/[module]-[revision].[ext]")
-    }
-    ivy {
-        name = "Railcraft"
-        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("railcraft.cf")}/[module]_[revision].[ext]")
-    }
-    ivy {
-        name = "IC2NuclearControl"
-        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("nc.cf")}/[module]-[revision].[ext]")
-    }
+//    maven {
+//        name = "chickenbones"
+//        url = uri("http://chickenbones.net/maven/")
+//    }
+//    maven {
+//        name = "ic2, forestry"
+//        url = uri("http://maven.ic2.player.to/")
+//    }
+//    maven { // EnderIO & EnderCore
+//        name = "tterrag Repo"
+//        url = uri("http://maven.tterrag.com")
+//    }
+//    maven("http://www.ryanliptak.com/maven/")
+//    ivy {
+//        name = "BuildCraft"
+//        artifactPattern("http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]")
+//    }
+//    ivy {
+//        name = "CoFHLib"
+//        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("cofhlib.cf")}/[module]-[revision].[ext]")
+//    }
+//    ivy {
+//        name = "CoFHCore"
+//        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("cofhcore.cf")}/[module]-[revision].[ext]")
+//    }
+//    ivy {
+//        name = "Railcraft"
+//        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("railcraft.cf")}/[module]_[revision].[ext]")
+//    }
+//    ivy {
+//        name = "IC2NuclearControl"
+//        artifactPattern("http://addons-origin.cursecdn.com/files/${pExt("nc.cf")}/[module]-[revision].[ext]")
+//    }
 }
 
 buildscript {
