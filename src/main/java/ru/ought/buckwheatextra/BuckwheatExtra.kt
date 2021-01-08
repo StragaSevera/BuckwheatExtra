@@ -27,7 +27,7 @@ fun log(string: String) {
 }
 
 @Mod(modid = MOD_ID, version = VERSION, name = MOD_NAME,
-    dependencies = "required-after:IC2;required-after:gregtech")
+    dependencies = "required-after:IC2;required-after:gregtech;required-after:EnderIO")
 object BuckwheatExtra {
     @JvmStatic
     @SidedProxy(clientSide = "ru.ought.buckwheatextra.proxy.ClientProxy",
